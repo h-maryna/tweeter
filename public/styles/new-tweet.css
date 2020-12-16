@@ -28,33 +28,3 @@ button {
   padding: 7px;
   float: left;
 }
-#tweet {
-  border: 2px solid #545149;
-}
-
-#tweet h5{
-  margin: 10px;
-  float: left;
-}
-#tweet h6 {
-  margin: 10px;
-  float: right;
-}
-#tweet div img {
-  width: 5%;
-  float: left;
-}
-
-#tweet-line {
-  width: 95%;
-  margin: 0 10px 20px 15px;
-  border: none;
-  border-bottom: solid #545149;
-  background-color: transparent;
-  color: #545149;
-  
-}
-footer span {
-  font-size: 16px;
-  margin-left: 15px;
-}
