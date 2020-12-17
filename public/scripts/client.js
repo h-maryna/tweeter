@@ -23,22 +23,22 @@ createTweetElement = (tweet) => {
   let $tweet = $("<article>").addClass("tweet");
   $tweet.html(`
   
-          <div class="tweet-user">
-            <img src=${tweet.user.avatars} />
-            <h5>${tweet.user.name}</h5>
-          </div>
-          <h6>${tweet.user.handle}</h6>
-        <div id="tweet-text">
-          ${escape(tweet.content.text)}
-        </div>
-        <footer>
-          <span>${jQuery.timeago((tweet.created_at / 1000) * 1000)}</span>
-          <div class="icon">
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-heart"></i>
-          </div>
-        </footer>
+    <div class="tweet-user">
+      <img src=${tweet.user.avatars} />
+      <div class="user-name">${tweet.user.name}</div>
+      <div class="user-handle">${tweet.user.handle}</div>
+    </div>
+    <div id="tweet-text">
+      ${escape(tweet.content.text)}
+    </div>
+    <footer>
+      <span>${jQuery.timeago((tweet.created_at / 1000) * 1000)}</span>
+      <div class="icon">
+        <i class="fas fa-flag"></i>
+        <i class="fas fa-retweet"></i>
+        <i class="fas fa-heart"></i>
+      </div>
+    </footer>
   `)
   return $tweet;
 };
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
   // hide and show input form by click
   let hidenTextArea = false;
-  $(".write-tweet").click(function () {
+  $(".fa-angle-double-down").click(function () {
     if (hidenTextArea === false) {
       $(".new-tweet").show(200)
       $("#tweet-text").focus()

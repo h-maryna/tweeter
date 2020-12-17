@@ -13,7 +13,15 @@ nav {
   font-family: 'Bungee', cursive, sans-serif;
 }
 
-.write-tweet {
+.write-tweet{
   display: flex;
   justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.fa-angle-double-down {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 75px;
+  color: red;
 }
