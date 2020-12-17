@@ -24,6 +24,7 @@ nav {
   justify-content: flex-end;
   margin-right: 10%;
   color: red;
+  padding: 5px;
 }
 
 /** Added styles for making our design responsive **/
