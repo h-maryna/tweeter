@@ -1,76 +1,109 @@
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
+ 
  */
-// Fake data taken from initial-tweets.json
-$(document).ready(function() {
-  $("#tweets").append("test");
-  const t = {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-    "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-    "created_at": 1461116232227
+
+const escape = function (str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+// rendering tweets
+const renderTweets = (tweets) => {
+  $("#tweets-container").html("")
+  for (tweet of tweets) {
+    $("#tweets-container").prepend(createTweetElement(tweet))
   }
+}
+//add escape to each user's inputs.
+//creating tweets accordingly to the pattern
+createTweetElement = (tweet) => {
+  let $tweet = $("<article>").addClass("tweet");
+  $tweet.html(`
   
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
-
-
-const createTweetElement = function(data) {
-  const $tweet = $(`<article class="tweet">
-  <div class="tweet-user">
-    <img src=${data.user.avatars}>
-  </div>
-  <h5>${data.user.name}</h5>
-  <h6>${data.user.handle}</h6>
-  <div id="tweet-text">
-  ${data.content.text}
-  </div>
-  <footer>
-    <span>${data.created_at}</span>
-    <div class="icon">
-    <i class="fas fa-flag"></i>
-      <i class="fas fa-retweet"></i>
-      <i class="fas fa-heart"></i>
-    </footer>
-    </article>`);
+          <div class="tweet-user">
+            <img src=${tweet.user.avatars} />
+            <h5>${tweet.user.name}</h5>
+          </div>
+          <h6>${tweet.user.handle}</h6>
+        <div id="tweet-text">
+          ${escape(tweet.content.text)}
+        </div>
+        <footer>
+          <span>${jQuery.timeago((tweet.created_at / 1000) * 1000)}</span>
+          <div class="icon">
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+          </div>
+        </footer>
+  `)
   return $tweet;
+};
+
+//loading tweets
+const loadTweets = () => {
+  $.get("/tweets", function (data) {
+    renderTweets(data)
+  })
+}
+//empty input form
+const clearForm = () => {
+  $("#tweet-text").val("")
+  $('.counter').text(140)
 }
 
+//jqury functionality
+$(document).ready(function () {
+  //renderTweets(data);
+  loadTweets();
+  //hiding
+  $(".new-tweet").hide(200);
 
-const renderTweets = function(tweets, section) {
-  for ( let t of tweets) {
-    let $tweet = createTweetElement(t);
-    section.append($tweet);
+  // hide and show input form by click
+  let hidenTextArea = false;
+  $(".write-tweet").click(function () {
+    if (hidenTextArea === false) {
+      $(".new-tweet").show(200)
+      $("#tweet-text").focus()
+      hidenTextArea = true;
+    } else {
+      $(".new-tweet").hide(200)
+      hidenTextArea = false;
+    }
+  });
 
-  }
-}
-renderTweets(data, $('#tweets'));
+  //submitting form
+  $("#form").submit(function (event) {
+    event.preventDefault();
+    let data = $("#form").serialize()
+
+    
+    //error functionality
+    if ($('#tweet-text').val() === "" || $('#tweet-text').val() === null) {
+      $("#alert-empty-tweet").show(200)
+    } 
+    else if($('.counter').val() <= 0 ) {
+      console.log()
+     // $("#alert-exeed-length").show(200)
+    }
+    else {
+      $.post("/tweets", data)
+        .done(function () {
+          loadTweets();
+          clearForm();
+        })
+    }
+  });
+  //hiding alerts at the beginig
+  $("#alert-empty-tweet").hide()
+  $("#alert-exeed-length").hide()
+  $("#tweet-text").on('keyup', function () {
+    const inputLength = $('#tweet-text').val().length;
+    if (inputLength > 0) {
+      $("#alert-empty-tweet").hide(200)
+    }
+  })
 });

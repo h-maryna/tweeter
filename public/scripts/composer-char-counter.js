@@ -1,3 +1,5 @@
+
+//counter and exceeding error functionality
 $(document).ready(function () {
   $('#tweet-text').on('keyup', function () {
     const inputLength = $(this).val().length;
