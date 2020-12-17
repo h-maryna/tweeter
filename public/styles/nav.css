@@ -16,12 +16,27 @@ nav {
 .write-tweet{
   display: flex;
   justify-content: flex-end;
-  margin-right: 10px;
+  margin-right: 5%;
 }
 
 .fa-angle-double-down {
   display: flex;
   justify-content: flex-end;
-  margin-right: 75px;
+  margin-right: 10%;
   color: red;
+}
+
+/** Added styles for making our design responsive **/
+@media only screen and (max-width: 768px) {
+  nav {
+    padding: 0.5em;
+    height: 75px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 }

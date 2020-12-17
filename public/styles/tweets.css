@@ -3,7 +3,15 @@
   width: 100%;
   margin-top: 10px;
   margin-bottom: 20px;
+  position: relative;
+  display: block;
   font-weight: lighter;
+}
+.new-tweet #tweet-text:hover {
+  border: 2px solid grey;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .tweet:hover {
@@ -12,21 +20,33 @@
   font-weight: bolder;
   display: block;
 }
-.tweet-user {
+
+article.tweet div {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: inherit;
+  background-image: none;
+  height: auto;
+  position: relative;
 }
 
-.user-name {
+.tweet-user {
+  display: flex;  
+}
+
+.user-img {
   margin-top: 20px;
   display: flex;
-  justify-content: end;
+  justify-content: left;
+  font-weight: lighter;
 }
 
 .user-handle {  
   display: flex;
-  justify-content: start;
+  justify-content: flex-end;
+  margin-right: 30px;
   color: grey;
-  margin-right: 150px;
 }
 
 .tweet-user img {
@@ -35,12 +55,14 @@
   display: flex;
   flex-direction: row;
   justify-content: start;
+  position: relative;
 }
 
 article.tweet footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 }
 
 article.tweet span {

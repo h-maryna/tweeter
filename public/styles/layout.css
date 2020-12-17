@@ -22,11 +22,41 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
 }
 
 .container {
-  width: 100%;
+  width: 60%;
+  position: relative;
+  margin-top: 200px;
   align-content: center;
   background-color: #f4f1ec;
-  padding: 1.5em;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/** Styles for making our design responsive **/
+@media only screen and (max-width: 768px) {
+  body {
+    display: block;
+    font-size: 20px;
+  }
+ 
+  .container{
+    margin-top: 5px;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 }

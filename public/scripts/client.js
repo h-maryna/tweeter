@@ -22,11 +22,14 @@ const renderTweets = (tweets) => {
 createTweetElement = (tweet) => {
   let $tweet = $("<article>").addClass("tweet");
   $tweet.html(`
-  
+  <div>
     <div class="tweet-user">
-      <img src=${tweet.user.avatars} />
-      <div class="user-name">${tweet.user.name}</div>
-      <div class="user-handle">${tweet.user.handle}</div>
+      <img class="user-img" src=${tweet.user.avatars} />
+      <h5>${tweet.user.name}</h5>
+    </div>
+      <div class="user-handle">
+        <h6>${tweet.user.handle}</h6>
+      </div>
     </div>
     <div id="tweet-text">
       ${escape(tweet.content.text)}

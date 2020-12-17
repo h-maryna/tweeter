@@ -30,3 +30,13 @@ button {
   padding: 7px;
   float: left;
 }
+
+/** Added styles for making our design responsive **/
+@media only screen and (max-width: 768px) {
+  .new-tweet{
+    margin-bottom: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+}
