@@ -13,11 +13,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
-!["Screenshot of main Tweeter page"](https://github.com/h-maryna/tweeter/blob/master/docs/5.png)
-!["Screenshot of creating a new tweet"](https://github.com/h-maryna/tweeter/blob/master/docs/4.png)
-!["Screenshot of mobile version of a Tweeter page"](https://github.com/h-maryna/tweeter/blob/master/docs/3.png)
-!["Screenshot of showing alert message when exceed 140 characters"](https://github.com/h-maryna/tweeter/blob/master/docs/2.png)
-!["Screenshot of showing alert message when trying to submit an empty tweet"](https://github.com/h-maryna/tweeter/blob/master/docs/1.png)
+!["Screenshot of main Tweeter page"](https://github.com/h-maryna/tweeter/blob/master/docs/5.png)<br />
+!["Screenshot of creating a new tweet"](https://github.com/h-maryna/tweeter/blob/master/docs/4.png)<br />
+!["Screenshot of mobile version of a Tweeter page"](https://github.com/h-maryna/tweeter/blob/master/docs/3.png)<br />
+!["Screenshot of showing alert message when exceed 140 characters"](https://github.com/h-maryna/tweeter/blob/master/docs/2.png)<br />
+!["Screenshot of showing alert message when trying to submit an empty tweet"](https://github.com/h-maryna/tweeter/blob/master/docs/1.png)<br />
 
 ## Dependencies
 
